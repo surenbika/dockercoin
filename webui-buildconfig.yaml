@@ -1,0 +1,48 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: dockercoin
+objects:
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: webui
+    labels:
+      app: webui
+  spec:
+    triggers:
+      - type: generic
+        generic:
+          secret: 052fc8a980b4686e
+      - type: GitHub
+        github:
+          secret: f8e2f58321770f01
+      - type: ImageChange
+        imageChange: {}
+      - type: ConfigChange
+    source:
+      type: Git
+      git:
+        uri: https://github.com/gloppasglop/openshift-dockercoin-webui.git
+        ref: master
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs:4
+          namespace: openshift
+    output:
+      to:
+        kind: ImageStreamTag
+        name: webui:latest
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: webui
+    name: webui
+  spec:
+    tags:
+      name: latest
+    dockerImageRepository: ""

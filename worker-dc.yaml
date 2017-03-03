@@ -1,0 +1,56 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: dockercoin
+objects:
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata:
+    labels:
+      app: worker
+      deploymentConfig: worker
+    name: worker
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: worker
+    strategy:
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          app: worker
+          deploymentconfig: worker
+        name: worker
+      spec:
+        containers:
+        - name: worker
+          image: worker
+          imagePullPolicy: Always
+          ports:
+          - name: worker-http
+            containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - worker
+        from:
+          kind: ImageStreamTag
+          name: worker:latest
+    - type: ConfigChange
