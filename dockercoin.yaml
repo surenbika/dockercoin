@@ -405,7 +405,6 @@ objects:
         from:
           kind: ImageStreamTag
           name: redis:latest
-          namespace: myproject
       type: ImageChange
 - kind: Service
   apiVersion: v1
