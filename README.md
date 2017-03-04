@@ -23,12 +23,15 @@ If you have a system with a Docker engine installed, the simplest way to get a r
 You can then run `oc cluster up` to get started immediately. 
 
 
-### Upload Dockercoin template
-
+### Create a new project for the dockercoin application
 
 ```
-# Load temmplate
-oc create -f dockercoin.yaml
+oc new-project dockercoin
+```
+
+### Create Dockercoin application from template
+
+```oc new-app -f dockercoin.yaml
 ```
 
 
