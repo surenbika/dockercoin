@@ -31,7 +31,8 @@ oc new-project dockercoin
 
 ### Create Dockercoin application from template
 
-```oc new-app -f dockercoin.yaml
+```
+oc new-app -f dockercoin.yaml
 ```
 
 
