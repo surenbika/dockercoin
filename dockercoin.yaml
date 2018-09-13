@@ -27,7 +27,7 @@ objects:
     source:
       type: Git
       git:
-        uri: "https://github.com/gloppasglop/openshift-dockercoin-rng.git"
+        uri: "https://github.com/surenbika/openshift-dockercoin-rng.git"
         ref: master
     strategy:
       type: Source
@@ -135,7 +135,7 @@ objects:
     source:
       type: Git
       git:
-        uri: "https://github.com/gloppasglop/openshift-dockercoin-hasher.git"
+        uri: "https://github.com/surenbika/openshift-dockercoin-hasher.git"
         ref: master
     strategy:
       type: Source
@@ -243,7 +243,7 @@ objects:
     source:
       type: Git
       git:
-        uri: "https://github.com/gloppasglop/openshift-dockercoin-worker.git"
+        uri: "https://github.com/surenbika/openshift-dockercoin-worker.git"
         ref: master
     strategy:
       type: Source
@@ -453,7 +453,7 @@ objects:
     source:
       type: Git
       git:
-        uri: "https://github.com/gloppasglop/openshift-dockercoin-webui.git"
+        uri: "https://github.com/surenbika/openshift-dockercoin-webui.git"
         ref: master
     strategy:
       type: Source
